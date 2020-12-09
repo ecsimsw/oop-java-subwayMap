@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.validator.StationValidator;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,30 +27,29 @@ public class StationRepository {
         return stations.stream()
                 .filter(station -> station.isName(name))
                 .findFirst()
-                .orElseThrow(()-> new IllegalArgumentException("찾는 역이 없습니다."));
+                .orElseThrow(()-> new IllegalArgumentException("역이 존재하지 않습니다."));
     }
 
     public static void addStation(Station station) {
-        if(isExist(station)){
-            throw new IllegalArgumentException("이미 존재하는 역 이름 입니다.");
-        }
+        StationValidator.checkDuplicated(station);
+
         stations.add(station);
     }
 
-    private static boolean isExist(Station searchStation){
+    public static void deleteStation(Station station) {
+        StationValidator.checkIfNonExistentStation(station);
+        StationValidator.checkInLineStation(station);
+
+        stations.remove(station);
+    }
+
+    public static boolean isExist(Station searchStation){
         return stations.stream()
                 .anyMatch(station -> station.isEquals(searchStation));
     }
 
-    public static void deleteStation(Station station) {
-        if(!isExist(station)){
-            throw new IllegalArgumentException("존재하지 않는 역 입니다.");
-        }
-
-        if(station.isInLine()){
-            throw new IllegalArgumentException("노선에 등록되어 있는 역은 삭제할 수 없습니다.");
-        }
-
-        stations.remove(station);
+    public static boolean isExistName(Name name){
+        return stations.stream()
+                .anyMatch(station -> station.isName(name));
     }
 }

@@ -20,9 +20,6 @@ public class StationController {
         try{
             OutputView.printMsg("## 등록할 역 이름 입력\n");
             Station station = new Station(InputView.getName(scanner));
-
-            StationValidator.checkDuplicated(station);
-
             StationRepository.addStation(station);
         }catch (Exception e){
             OutputView.printError(e);
@@ -33,10 +30,6 @@ public class StationController {
         try{
             OutputView.printMsg("## 삭제할 역 이름 입력\n");
             Station station = new Station(InputView.getName(scanner));
-
-            StationValidator.checkIfNonExistentStation(station);
-            StationValidator.checkInLineStation(station);
-
             StationRepository.deleteStation(station);
         }catch (Exception e){
             OutputView.printError(e);
