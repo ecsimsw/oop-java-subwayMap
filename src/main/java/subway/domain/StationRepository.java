@@ -38,7 +38,7 @@ public class StationRepository {
 
     public static void deleteStation(Station station) {
         StationValidator.checkIfNonExistentStation(station);
-        StationValidator.checkInLineStation(station);
+        StationValidator.checkStationInLine(station);
 
         stations.remove(station);
     }

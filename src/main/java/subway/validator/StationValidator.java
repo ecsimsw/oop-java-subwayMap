@@ -20,9 +20,9 @@ public class StationValidator {
         }
     }
 
-    public static void checkInLineStation(Station station){
+    public static void checkStationInLine(Station station){
         if(station.isInLine()){
-            throw new IllegalArgumentException("노선에 등록되어 있는 역은 삭제할 수 없습니다.");
+            throw new IllegalArgumentException("노선에 등록되어 있는 역입니다.");
         }
     }
 }
