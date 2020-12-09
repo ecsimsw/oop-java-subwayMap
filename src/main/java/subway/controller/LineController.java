@@ -25,7 +25,7 @@ public class LineController {
 
     private Name getNewLineName(){
         try{
-            OutputView.printMsg("## 등록할 라인 이름 입력\n");
+            OutputView.printMsg("## 등록할 노선 이름 입력\n");
             Name name = InputView.getName(scanner);
             LineValidator.checkDuplicatedName(name);
             return name;
@@ -58,7 +58,19 @@ public class LineController {
     }
 
     public void deleteLine(){
-        OutputView.printMsg("## 삭제할 라인 이름 입력\n");
+        OutputView.printMsg("## 삭제할 노선 이름 입력\n");
         LineRepository.deleteLine(InputView.getLine(scanner));
+    }
+
+    public void addStationInLine(){
+        OutputView.printMsg("## 노선 이름 입력\n");
+        Line line = InputView.getLine(scanner);
+
+        OutputView.printMsg("## 역 이름 입력\n");
+        Station station = InputView.getStation(scanner);
+
+        OutputView.printMsg("## 순서를 입력하세요.\n");
+        Order order = InputView.getOrder(scanner, line);
+        line.addStation(order.getOrder(), station);
     }
 }

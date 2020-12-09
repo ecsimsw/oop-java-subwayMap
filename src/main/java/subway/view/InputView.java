@@ -25,6 +25,18 @@ public class InputView {
         }
     }
 
+    public static Order getOrder(Scanner scanner, Line line){
+        try{
+            return new Order(Integer.parseInt(getInput(scanner)), line);
+        }catch (NullPointerException NPE){
+            OutputView.printMsg("[ERROR] 숫자를 입력해야합니다");
+            return getOrder(scanner, line);
+        }catch (Exception e){
+            OutputView.printError(e);
+            return getOrder(scanner, line);
+        }
+    }
+
     public static String selectMenu(Scanner scanner){
         OutputView.printMsg("## 원하는 기능을 선택하세요.\n");
         return getInput(scanner);

@@ -6,8 +6,6 @@ import java.util.LinkedList;
 
 public class Line {
     private final Name name;
-    private final Station first;
-    private final Station last;
     private final LinkedList<Station> stations = new LinkedList<>();
 
     public Line(Name name, Station first, Station last){
@@ -15,11 +13,9 @@ public class Line {
         LineValidator.checkValidTerminal(first, last);
 
         this.name = name;
-        this.first = first;
-        this.last = last;
 
         stations.add(0, first);
-        stations.add(stations.size(), first);
+        stations.add(stations.size(), last);
     }
 
     public LinkedList<Station> getStations(){
