@@ -12,6 +12,13 @@ public class Line {
         this.name = name;
         this.first = first;
         this.last = last;
+
+        stations.addFirst(first);
+        stations.addLast(last);
+    }
+
+    public LinkedList<Station> getStations(){
+        return stations;
     }
 
     public Name getName() {

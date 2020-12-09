@@ -1,5 +1,6 @@
 package subway.view;
 
+import subway.domain.Line;
 import subway.domain.Station;
 import java.util.List;
 
@@ -8,8 +9,22 @@ public class OutputView {
 
     private OutputView(){}
 
+    public static void printMap(List<Line> lines){
+        OutputView.printMsg("## 지하철 노선도\n");
+        for(Line line : lines){
+            OutputView.printfMsg(INFO_MESSAGE, line.getName());
+            OutputView.printfMsg(INFO_MESSAGE, "---\n");
+            printStationNames(line.getStations());
+            OutputView.printfMsg("\n");
+        }
+    }
+
     public static void printStationList(List<Station> stations){
         OutputView.printMsg("## 역 목록\n");
+        printStationList(stations);
+    }
+
+    public static void printStationNames(List<Station> stations){
         for(Station station : stations){
             OutputView.printfMsg(INFO_MESSAGE, station.getName());
         }
