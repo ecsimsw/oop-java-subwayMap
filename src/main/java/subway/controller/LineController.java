@@ -2,7 +2,6 @@ package subway.controller;
 
 import subway.domain.*;
 import subway.validator.LineValidator;
-import subway.validator.StationValidator;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -16,11 +15,11 @@ public class LineController {
     }
 
     public void addNewLine(){
-        Name newLineName = getNewLineName();
-        Station firstStation = getFirstStation();
-        Station lastStation = getLastStation(firstStation);
+        Name name = getNewLineName();
+        Station first = getFirstStation();
+        Station last = getLastStation(first);
 
-        Line newLine = new Line(newLineName, firstStation, lastStation);
+        Line newLine = new Line(name, first, last);
         LineRepository.addLine(newLine);
     }
 
@@ -39,7 +38,7 @@ public class LineController {
     private Station getFirstStation(){
         OutputView.printMsg("## 등록할 노선의 상행 종점역 이름을 입력하세요.\n");
         try{
-            return getStation();
+            return InputView.getStation(scanner);
         }catch (Exception e){
             OutputView.printError(e);
             return getFirstStation();
@@ -49,7 +48,7 @@ public class LineController {
     private Station getLastStation(Station firstStation){
         OutputView.printMsg("## 등록할 노선의 하행 종점역 이름을 입력하세요.\n");
         try{
-            Station lastStation = getStation();
+            Station lastStation = InputView.getStation(scanner);
             LineValidator.checkValidTerminal(firstStation, lastStation);
             return lastStation;
         }catch (Exception e){
@@ -58,7 +57,7 @@ public class LineController {
         }
     }
 
-    private Station getStation(){
-        return StationRepository.getStationByName(InputView.getName(scanner));
+    public void deleteLine(){
+
     }
 }

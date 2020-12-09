@@ -9,10 +9,13 @@ import java.util.Scanner;
 public class InputView {
     private InputView(){}
 
-    public static Name deleteStation(Scanner scanner){
-        OutputView.printMsg("삭제할 역 이름 입력 \n");
-        // 존재 확인
-        return getName(scanner);
+    public static Station getStation(Scanner scanner){
+        try{
+            return StationRepository.getStationByName(InputView.getName(scanner));
+        }catch (Exception e){
+            OutputView.printError(e);
+            return getStation(scanner);
+        }
     }
 
     public static String selectMenu(Scanner scanner){
