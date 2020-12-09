@@ -15,6 +15,9 @@ public class Line {
 
         stations.addFirst(first);
         stations.addLast(last);
+
+        first.inLine();
+        last.inLine();
     }
 
     public LinkedList<Station> getStations(){
@@ -27,5 +30,6 @@ public class Line {
 
     public void addStation(int index, Station station){
         stations.add(index, station);
+        station.inLine();
     }
 }

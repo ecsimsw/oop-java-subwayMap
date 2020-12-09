@@ -3,7 +3,6 @@ package subway.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
@@ -41,7 +40,15 @@ public class StationRepository {
                 .anyMatch(station -> station.isEquals(searchStation));
     }
 
-    public static boolean deleteStation(String name) {
-        return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    public static void deleteStation(Station station) {
+        if(!isExist(station)){
+            throw new IllegalArgumentException("존재하지 않는 역 입니다.");
+        }
+
+        if(station.isInLine()){
+            throw new IllegalArgumentException("노선에 등록되어 있는 역은 삭제할 수 없습니다.");
+        }
+
+        stations.remove(station);
     }
 }
