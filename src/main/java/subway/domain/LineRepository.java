@@ -48,4 +48,9 @@ public class LineRepository {
     public static boolean deleteLine(Line name) {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
+
+    public static boolean isExistName(Name name){
+        return lines.stream()
+                .anyMatch(line -> line.isName(name));
+    }
 }

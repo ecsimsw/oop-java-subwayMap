@@ -24,8 +24,16 @@ public class Line {
         return stations;
     }
 
+    public boolean isName(Name name){
+        return name.isSame(name);
+    }
+
     public Name getName() {
         return name;
+    }
+
+    public boolean isEquals(Line line){
+        return name.isSame(line.name);
     }
 
     public void addStation(int index, Station station){
