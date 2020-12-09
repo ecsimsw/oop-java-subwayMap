@@ -14,4 +14,8 @@ public class Station {
     public boolean isName(Name name){
         return this.name.isSame(name);
     }
+
+    public boolean isEquals(Station station){
+        return name.isSame(station.name);
+    }
 }

@@ -30,7 +30,15 @@ public class StationRepository {
     }
 
     public static void addStation(Station station) {
+        if(isExist(station)){
+            throw new IllegalArgumentException("이미 존재하는 역 이름 입니다.");
+        }
         stations.add(station);
+    }
+
+    private static boolean isExist(Station searchStation){
+        return stations.stream()
+                .anyMatch(station -> station.isEquals(searchStation));
     }
 
     public static boolean deleteStation(String name) {

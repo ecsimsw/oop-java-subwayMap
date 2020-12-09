@@ -6,6 +6,7 @@ import java.util.List;
 
 public class OutputView {
     private static final String INFO_MESSAGE = "[INFO] %s \n";
+    private static final String ERROR_MESSAGE = "[ERROR] %s \n";
 
     private OutputView(){}
 
@@ -21,13 +22,17 @@ public class OutputView {
 
     public static void printStationList(List<Station> stations){
         OutputView.printMsg("## 역 목록\n");
-        printStationList(stations);
+        printStationNames(stations);
     }
 
     public static void printStationNames(List<Station> stations){
         for(Station station : stations){
             OutputView.printfMsg(INFO_MESSAGE, station.getName());
         }
+    }
+
+    public static void printError(Exception e){
+        OutputView.printfMsg(ERROR_MESSAGE, e.getMessage());
     }
 
     public static void printSectionManagement(){
