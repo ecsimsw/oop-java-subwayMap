@@ -1,15 +1,17 @@
 package subway.domain;
 
 public class Station {
-    private String name;
+    private Name name;
 
-    public Station(String name) {
+    public Station(Name name) {
         this.name = name;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    // 추가 기능 구현
+    public boolean isName(Name name){
+        return this.name.isSame(name);
+    }
 }

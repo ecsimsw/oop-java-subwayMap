@@ -12,6 +12,13 @@ public class StationRepository {
         return Collections.unmodifiableList(stations);
     }
 
+    public static Station getStationByName(Name name){
+        return stations.stream()
+                .filter(station -> station.isName(name))
+                .findFirst()
+                .orElseThrow(()-> new IllegalArgumentException("찾는 역이 없습니다."));
+    }
+
     public static void addStation(Station station) {
         stations.add(station);
     }
