@@ -18,11 +18,8 @@ public class Line {
         this.first = first;
         this.last = last;
 
-        stations.addFirst(first);
-        stations.addLast(last);
-
-        first.inLine();
-        last.inLine();
+        stations.add(0, first);
+        stations.add(stations.size(), first);
     }
 
     public LinkedList<Station> getStations(){
@@ -37,12 +34,12 @@ public class Line {
         return name;
     }
 
-    public boolean isEquals(Line line){
-        return name.isSame(line.name);
-    }
-
     public void addStation(int index, Station station){
         stations.add(index, station);
         station.inLine();
+    }
+
+    public void removeIncludedStations(){
+        stations.stream().forEach(Station::outLine);
     }
 }

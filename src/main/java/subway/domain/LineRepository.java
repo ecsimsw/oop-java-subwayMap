@@ -3,7 +3,6 @@ package subway.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
@@ -45,8 +44,9 @@ public class LineRepository {
         lines.add(line);
     }
 
-    public static void deleteLine(Line name) {
-        lines.remove(name);
+    public static void deleteLine(Line line) {
+        line.removeIncludedStations();
+        lines.remove(line);
     }
 
     public static boolean isExistName(Name name){
@@ -59,6 +59,5 @@ public class LineRepository {
                 .filter(line->line.isName(name))
                 .findFirst()
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 라인입니다."));
-
     }
 }
