@@ -8,6 +8,35 @@ import java.util.Objects;
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
 
+    static{
+        Station gyedae = StationRepository.getStationByName(new Name("교대역"));
+        Station gangnam = StationRepository.getStationByName(new Name("강남역"));
+        Station yoeksam = StationRepository.getStationByName(new Name("역삼역"));
+        Line line = new Line(new Name("2호선"), gyedae, yoeksam);
+        line.addStation(1, gangnam);
+        lines.add(line);
+    }
+
+    static{
+        Station gyedae = StationRepository.getStationByName(new Name("교대역"));
+        Station nambu = StationRepository.getStationByName(new Name("남부터미널역"));
+        Station yangjae = StationRepository.getStationByName(new Name("양재역"));
+        Station maebong = StationRepository.getStationByName(new Name("매봉역"));
+        Line line = new Line(new Name("3호선"), gyedae, maebong);
+        line.addStation(1, nambu);
+        line.addStation(2, yangjae);
+        lines.add(line);
+    }
+
+    static{
+        Station gangnam = StationRepository.getStationByName(new Name("강남역"));
+        Station yangjae = StationRepository.getStationByName(new Name("양재역"));
+        Station yangjaeForest = StationRepository.getStationByName(new Name("양재시민의숲역"));
+        Line line = new Line(new Name("신분당선"), gangnam, yangjaeForest);
+        line.addStation(1, yangjae);
+        lines.add(line);
+    }
+
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
     }
