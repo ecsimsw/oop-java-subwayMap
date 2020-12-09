@@ -45,7 +45,7 @@ public class LineRepository {
     }
 
     public static void deleteLine(Line line) {
-        line.removeIncludedStations();
+        line.removeAllIncludedStations();
         lines.remove(line);
     }
 

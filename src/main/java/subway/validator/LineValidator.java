@@ -1,5 +1,6 @@
 package subway.validator;
 
+import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Name;
 import subway.domain.Station;
@@ -19,5 +20,10 @@ public class LineValidator {
         }
     }
 
+    public static void checkStationInLine(Station station, Line line){
+        if(!line.hasStation(station)){
+            throw new IllegalArgumentException("노선에 존재하는 역이 아닙니다.");
+        }
+    }
 
 }

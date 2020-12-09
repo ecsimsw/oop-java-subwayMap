@@ -35,7 +35,20 @@ public class Line {
         station.inLine();
     }
 
-    public void removeIncludedStations(){
+    public void removeAllIncludedStations(){
         stations.stream().forEach(Station::outLine);
+        stations.clear();
     }
+
+    public void removeStation(Station station){
+        station.outLine();
+        stations.remove(station);
+    }
+
+    public boolean hasStation(Station findStation){
+        return stations
+                .stream()
+                .anyMatch(station -> station.isEquals(findStation));
+    }
+
 }
