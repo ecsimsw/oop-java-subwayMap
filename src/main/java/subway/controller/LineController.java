@@ -58,6 +58,7 @@ public class LineController {
     }
 
     public void deleteLine(){
-
+        OutputView.printMsg("## 삭제할 라인 이름 입력\n");
+        LineRepository.deleteLine(InputView.getLine(scanner));
     }
 }

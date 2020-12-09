@@ -45,12 +45,20 @@ public class LineRepository {
         lines.add(line);
     }
 
-    public static boolean deleteLine(Line name) {
-        return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    public static void deleteLine(Line name) {
+        lines.remove(name);
     }
 
     public static boolean isExistName(Name name){
         return lines.stream()
                 .anyMatch(line -> line.isName(name));
+    }
+
+    public static Line getByName(Name name){
+        return lines.stream()
+                .filter(line->line.isName(name))
+                .findFirst()
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 라인입니다."));
+
     }
 }

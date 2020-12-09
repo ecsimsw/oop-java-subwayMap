@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.validator.LineValidator;
+
 import java.util.LinkedList;
 
 public class Line {
@@ -9,6 +11,9 @@ public class Line {
     private final LinkedList<Station> stations = new LinkedList<>();
 
     public Line(Name name, Station first, Station last){
+        LineValidator.checkDuplicatedName(name);
+        LineValidator.checkValidTerminal(first, last);
+
         this.name = name;
         this.first = first;
         this.last = last;

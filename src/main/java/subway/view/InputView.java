@@ -1,8 +1,6 @@
 package subway.view;
 
-import subway.domain.Name;
-import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.domain.*;
 
 import java.util.Scanner;
 
@@ -15,6 +13,15 @@ public class InputView {
         }catch (Exception e){
             OutputView.printError(e);
             return getStation(scanner);
+        }
+    }
+
+    public static Line getLine(Scanner scanner){
+        try{
+            return LineRepository.getByName(InputView.getName(scanner));
+        }catch (Exception e){
+            OutputView.printError(e);
+            return getLine(scanner);
         }
     }
 
