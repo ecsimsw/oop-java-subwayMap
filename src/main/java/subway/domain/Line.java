@@ -30,5 +30,15 @@ public class Line {
         return name;
     }
 
-    // 추가 기능 구현
+    public void addSection(int index, Station station){
+        if(stations.size() < index){
+            throw new IllegalArgumentException("잘못된 순서입니다.");
+        }
+
+        if(stations.contains(station)){
+            throw new IllegalArgumentException("이미 포함된 역입니다.");
+        }
+
+        stations.add(index, station);
+    }
 }
