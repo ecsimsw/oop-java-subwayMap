@@ -37,7 +37,7 @@ public class MainController {
         }
 
         if(input.equals("2")){
-            lineController.printLineMenu();
+            lineController.runLineMenu();
         }
 
         if(input.equals("3")){
@@ -64,5 +64,4 @@ public class MainController {
             OutputView.printStationList(line.getStations());
         }
     }
-
 }
