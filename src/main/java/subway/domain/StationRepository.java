@@ -41,4 +41,9 @@ public class StationRepository {
                 .findFirst()
                 .orElseThrow(()-> new IllegalArgumentException("존재하지 않는 역 입니다."));
     }
+
+    public static boolean isExistName(Name name){
+        return stations.stream()
+                .anyMatch(station -> station.isName(name));
+    }
 }
