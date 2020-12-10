@@ -44,7 +44,7 @@ public class MainController {
             printSubwayMap();
         }
 
-        if (input.equals("B")) {
+        if (input.equals("Q")) {
             setLoopEnd();
         }
     }
