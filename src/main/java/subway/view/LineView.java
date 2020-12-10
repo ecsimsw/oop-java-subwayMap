@@ -4,11 +4,13 @@ import subway.Repository.PageRepository;
 import subway.Repository.StationRepository;
 import subway.domain.*;
 import subway.domain.validator.LineValidator;
+import subway.domain.validator.MainValidator;
 
 import java.util.Scanner;
 import java.util.List;
 
 public class LineView {
+    private static final String[] buttons = new String[]{"1","2","3","B"};
     private final Scanner scanner;
 
     public LineView(Scanner scanner) {
@@ -17,7 +19,14 @@ public class LineView {
 
     public String selectLineMenu() {
         OutputView.print(PageRepository.linePage);
-        return InputView.getSelect(scanner);
+        try{
+            String input = InputView.getSelect(scanner);
+            MainValidator.checkValidSelection(input, buttons);
+            return input;
+        }catch (Exception e){
+            OutputView.printError(e);
+            return selectLineMenu();
+        }
     }
 
     public Name getLineNameToAdd() {

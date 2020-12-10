@@ -7,11 +7,13 @@ import subway.domain.Line;
 import subway.domain.Name;
 import subway.domain.Station;
 import subway.domain.validator.LineValidator;
+import subway.domain.validator.MainValidator;
 import subway.domain.validator.SectionValidator;
 
 import java.util.Scanner;
 
 public class SectionView {
+    private static final String[] buttons = new String[]{"1","2","B"};
     private final Scanner scanner;
 
     public SectionView(Scanner scanner) {
@@ -20,7 +22,14 @@ public class SectionView {
 
     public String selectSectionMenu() {
         OutputView.print(PageRepository.sectionPage);
-        return InputView.getSelect(scanner);
+        try{
+            String input = InputView.getSelect(scanner);
+            MainValidator.checkValidSelection(input, buttons);
+            return input;
+        }catch (Exception e){
+            OutputView.printError(e);
+            return selectSectionMenu();
+        }
     }
 
     public Name getExistLineName() {
