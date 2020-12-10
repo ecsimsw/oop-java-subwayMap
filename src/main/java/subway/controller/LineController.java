@@ -14,8 +14,7 @@ public class LineController {
     }
 
     public void runLineMenu() {
-        String input = lineView.selectLineMenu();
-        nextPage(input);
+        nextPage(lineView.selectLineMenu());
     }
 
     private void nextPage(String input) {

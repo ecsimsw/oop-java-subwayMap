@@ -21,8 +21,9 @@ public class MainView {
     public void printSubwayMap(List<Line> lines) {
         for (Line line : lines) {
             OutputView.printInfo(line.getName());
-            OutputView.printInfo("---\n");
+            OutputView.printInfo("---");
             OutputView.printStationList(line.getStations());
+            OutputView.print("\n");
         }
     }
 }

@@ -22,8 +22,7 @@ public class MainController {
 
     public void printStationMenu() {
         do {
-            String input = mainView.selectMainMenu();
-            nextPage(input);
+            nextPage(mainView.selectMainMenu());
         } while (isOnLoop);
     }
 
