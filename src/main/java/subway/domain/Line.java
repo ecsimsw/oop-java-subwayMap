@@ -65,4 +65,8 @@ public class Line {
     public boolean isStationOnLine(Station station) {
         return this.stations.contains(station);
     }
+
+    public int getSize(){
+        return stations.size();
+    }
 }

@@ -3,24 +3,19 @@ package subway.controller;
 import subway.domain.Line;
 import subway.Repository.LineRepository;
 import subway.domain.Station;
-import subway.Repository.StationRepository;
-import subway.view.InputView;
-import subway.view.OutputView;
-import subway.Repository.PageRepository;
+import subway.view.SectionView;
 
 import java.util.Scanner;
 
 public class SectionController {
-    private final Scanner scanner;
+    private final SectionView sectionView;
 
     public SectionController(Scanner scanner) {
-        this.scanner = scanner;
+        sectionView = new SectionView(scanner);
     }
 
     public void printSectionMenu() {
-        OutputView.print(PageRepository.sectionPage);
-        String input = InputView.getSelect(scanner);
-        nextPage(input);
+        nextPage(sectionView.selectSectionMenu());
     }
 
     private void nextPage(String input) {
@@ -38,22 +33,16 @@ public class SectionController {
     }
 
     public void addSection() {
-        OutputView.print("## 노선을 입력하세요. \n");
-        Line line = LineRepository.getByName(InputView.getName(scanner));
-        OutputView.print("## 역 이름을 입력하세요. \n");
-        Station station = StationRepository.getByName(InputView.getName(scanner));
-        OutputView.print("## 순서을 입력하세요. \n");
-        int order = Integer.parseInt(scanner.nextLine());
-        line.addSection(order, station);
-        OutputView.printInfo("구간이 등록되었습니다.\n");
+        Line line = LineRepository.getByName(sectionView.getExistLineName());
+        Station station = sectionView.getStationToAddSection(line);
+        line.addSection(sectionView.getOrder(line), station);
+        sectionView.printSuccessAddMessage();
     }
 
     public void removeSection() {
-        OutputView.print("## 삭제할 구간의 노선을 입력하세요. \n");
-        Line line = LineRepository.getByName(InputView.getName(scanner));
-        OutputView.print("## 삭제할 구간의 역을 입력하세요. \n");
-        Station station = StationRepository.getByName(InputView.getName(scanner));
+        Line line = LineRepository.getByName(sectionView.getExistLineName());
+        Station station = sectionView.getStationToRemove(line);
         line.removeSection(station);
-        OutputView.printInfo("구간이 삭제되었습니다.\n");
+        sectionView.printSuccessRemoveMessage();
     }
 }
