@@ -9,6 +9,10 @@ public class Out {
 
     private Out(){}
 
+    public static void printInfo(String msg){
+        printf(INFO_MESSAGE, msg);
+    }
+
     public static void printStationList(List<Station> stations){
         for(Station station : stations){
             Out.printf(INFO_MESSAGE, station.getName());

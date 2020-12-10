@@ -43,13 +43,14 @@ public class StationController {
         Out.print("## 등록할 역 이름을 입력하세요.\n");
         Station station = new Station(scanner.nextLine());
         StationRepository.addStation(station);
-        Out.print("지하철 역이 등록되었습니다.\n");
+        Out.printInfo("지하철 역이 등록되었습니다.\n");
     }
 
     public void deleteStation(){
         Out.print("## 삭제할 역 이름을 입력하세요.");
         Station station = new Station(scanner.nextLine());
         StationRepository.deleteStation(station);
+        Out.printInfo("지하철 역이 삭제되었습니다.\n");
     }
 
     public void printStation(){
