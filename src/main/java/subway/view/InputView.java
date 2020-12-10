@@ -6,7 +6,7 @@ public class InputView {
     private InputView(){}
 
     public static String getSelect(Scanner scanner){
-        OutView.print(PageRepository.selectPageMessage);
+        OutputView.print(PageRepository.selectPageMessage);
         return getInput(scanner);
     }
 

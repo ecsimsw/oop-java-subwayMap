@@ -3,7 +3,7 @@ package subway.controller;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.view.InputView;
-import subway.view.OutView;
+import subway.view.OutputView;
 import subway.view.PageRepository;
 
 import java.util.Scanner;
@@ -25,7 +25,7 @@ public class MainController {
 
     public void printStationMenu(){
         do {
-            OutView.print(PageRepository.mainPage);
+            OutputView.print(PageRepository.mainPage);
             String input = InputView.getSelect(scanner);
             nextPage(input);
         } while (isOnLoop);
@@ -55,9 +55,9 @@ public class MainController {
 
     private void printSubwayMap(){
         for(Line line : LineRepository.lines()){
-            OutView.printInfo(line.getName());
-            OutView.printInfo("---\n");
-            OutView.printStationList(line.getStations());
+            OutputView.printInfo(line.getName());
+            OutputView.printInfo("---\n");
+            OutputView.printStationList(line.getStations());
         }
     }
 
