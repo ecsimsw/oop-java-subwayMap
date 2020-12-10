@@ -41,6 +41,10 @@ public class MainController {
         }
 
         if(input.equals("3")){
+            sectionController.printSectionMenu();
+        }
+
+        if(input.equals("4")){
             printSubwayMap();
         }
 

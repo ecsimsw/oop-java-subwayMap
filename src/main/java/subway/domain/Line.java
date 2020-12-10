@@ -61,4 +61,8 @@ public class Line {
     public boolean isName(Name otherName){
         return this.name.equals(otherName);
     }
+
+    public boolean isStationOnLine(Station station){
+        return this.stations.contains(station);
+    }
 }

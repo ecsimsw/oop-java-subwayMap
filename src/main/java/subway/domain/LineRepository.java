@@ -55,4 +55,9 @@ public class LineRepository {
                 .findFirst()
                 .orElseThrow(()->new IllegalArgumentException("노선이 존재하지 않습니다."));
     }
+
+    public static boolean isExistName(Name name){
+        return lines.stream()
+                .anyMatch(line -> line.isName(name));
+    }
 }

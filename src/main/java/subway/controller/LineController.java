@@ -39,24 +39,59 @@ public class LineController {
     }
 
     public void addLine(){
-        OutputView.print("## 등록할 노선 이름을 입력하세요.\n");
-        Name name = InputView.getName(scanner);
-        OutputView.print("## 등록할 노선의 상행 종점역 이름을 입력하세요.\n");
-        Name firstStationName = InputView.getName(scanner);
-        OutputView.print("## 등록할 노선의 하행 종점역 이름을 입력하세요.\n");
-        Name lastStationName = InputView.getName(scanner);
-
-        Station firstStation = StationRepository.getByName(firstStationName);
-        Station lastStation = StationRepository.getByName(lastStationName);
+        Name name = getLineNameToAdd();
+        Station firstStation = getFirstStation();
+        Station lastStation = getLastStation(firstStation);
 
         LineRepository.addLine(new Line(name, firstStation, lastStation));
         OutputView.printInfo("지하철 노선이 등록되었습니다. \n");
     }
 
+    private Name getLineNameToAdd(){
+        OutputView.print("## 등록할 노선 이름을 입력하세요.\n");
+        try{
+            Name name = InputView.getName(scanner);
+            InputValidator.checkNonExistLineName(name);
+            return name;
+        }catch (Exception e){
+            OutputView.printError(e);
+            getLineNameToAdd();
+            return getLineNameToAdd();
+        }
+    }
+
+    private Station getFirstStation(){
+        OutputView.print("## 등록할 노선의 상행 종점역 이름을 입력하세요.\n");
+        try{
+            return StationRepository.getByName(InputView.getName(scanner));
+        }catch (Exception e){
+            OutputView.printError(e);
+            return getFirstStation();
+        }
+    }
+
+    private Station getLastStation(Station firstStation){
+        OutputView.print("## 등록할 노선의 하행 종점역 이름을 입력하세요.\n");
+        try{
+            Station lastStation = StationRepository.getByName(InputView.getName(scanner));
+            InputValidator.checkDuplicatedTerminal(firstStation, lastStation);
+            return lastStation;
+        }catch (Exception e){
+            OutputView.printError(e);
+            return getLastStation(firstStation);
+        }
+    }
+
+
     public void deleteLine(){
         OutputView.print("## 삭제할 노선 이름을 입력하세요.\n");
-        LineRepository.deleteByName(InputView.getName(scanner));
-        OutputView.printInfo("지하철 노선이 삭제되었습니다. \n");
+        try{
+            LineRepository.deleteByName(InputView.getName(scanner));
+            OutputView.printInfo("지하철 노선이 삭제되었습니다. \n");
+        }catch (Exception e){
+            OutputView.printError(e);
+            deleteLine();
+        }
     }
 
     public void printLines(){
