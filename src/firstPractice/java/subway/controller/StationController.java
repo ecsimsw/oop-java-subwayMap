@@ -7,16 +7,12 @@ import subway.validator.StationValidator;
 import subway.view.InputView;
 import subway.view.OutputView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class StationController {
-    private final Scanner scanner;
 
-    public StationController(Scanner scanner){
-        this.scanner = scanner;
-    }
-
-    public void addNewStation(){
+    public static void addNewStation(Scanner scanner){
         try{
             OutputView.printMsg("## 등록할 역 이름 입력\n");
             Station station = new Station(InputView.getName(scanner));
@@ -26,7 +22,7 @@ public class StationController {
         }
     }
 
-    public void deleteStation(){
+    public static void deleteStation(Scanner scanner){
         try{
             OutputView.printMsg("## 삭제할 역 이름 입력\n");
             Station station = new Station(InputView.getName(scanner));
@@ -34,5 +30,9 @@ public class StationController {
         }catch (Exception e){
             OutputView.printError(e);
         }
+    }
+
+    public static void printStations(){
+        OutputView.printStationList(StationRepository.stations());
     }
 }

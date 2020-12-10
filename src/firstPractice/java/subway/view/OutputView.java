@@ -35,20 +35,8 @@ public class OutputView {
         OutputView.printfMsg(ERROR_MESSAGE, e.getMessage());
     }
 
-    public static void printSectionManagement(){
-        OutputView.printMsg(MenuRepository.sectionManagementMenu);
-    }
-
-    public static void printLineManagement(){
-        OutputView.printMsg(MenuRepository.lineManagementMenu);
-    }
-
-    public static void printStationManagement(){
-        OutputView.printMsg(MenuRepository.stationManagementMenu);
-    }
-
-    public static void printMainPage(){
-        OutputView.printMsg(MenuRepository.mainMenu);
+    public static void printInfoMsg(String msg){
+        printfMsg(INFO_MESSAGE, msg);
     }
 
     public static void printfMsg(String msg, Object... args){

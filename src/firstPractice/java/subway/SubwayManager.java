@@ -18,23 +18,18 @@ public class SubwayManager {
     }
 
     private void mainPage(){
-        OutputView.printMainPage();
-        String button = InputView.selectMenu(scanner);
-
-        if(button.equals("1")){
-            stationManagement();
-            return;
-        }
-
-        if(button.equals("2")){
+        while(true){
+            OutputView.printMainPage();
+            String button = InputView.selectMenu(scanner);
 
         }
+
+
     }
 
     private void stationManagement(){
         OutputView.printStationManagement();
         String button = InputView.selectMenu(scanner);
-
 
     }
 
