@@ -4,6 +4,7 @@ import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.view.In;
 import subway.view.Out;
+import subway.view.PageRepository;
 
 import java.util.Scanner;
 
@@ -12,6 +13,30 @@ public class StationController {
 
     public StationController(Scanner scanner){
         this.scanner = scanner;
+    }
+
+    public void printStationMenu(){
+        Out.print(PageRepository.stationPage);
+        String input = In.getSelect(scanner);
+        nextPage(input);
+    }
+
+    private void nextPage(String input){
+        if(input.equals("1")){
+            addStation();
+        }
+
+        if(input.equals("2")){
+            deleteStation();
+        }
+
+        if(input.equals("3")){
+            deleteStation();
+        }
+
+        if(input.equals("B")){
+            return;
+        }
     }
 
     public void addStation(){
