@@ -4,6 +4,7 @@ import subway.domain.*;
 import subway.domain.validator.LineValidator;
 
 import java.util.Scanner;
+import java.util.List;
 
 public class LineView {
     private final Scanner scanner;
@@ -71,10 +72,9 @@ public class LineView {
         OutputView.printInfo("지하철 노선이 삭제되었습니다. \n");
     }
 
-    public void printLines(){
+    public void printLines(List<Line> lines){
         OutputView.print("## 노션 목록\n");
-        LineRepository.lines().stream()
-                .map(Line::getName)
-                .forEach(name -> OutputView.printInfo(name+"\n"));
+        lines.stream()
+                .forEach(line -> OutputView.printInfo(line.getName()+"\n"));
     }
 }

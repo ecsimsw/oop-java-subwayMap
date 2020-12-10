@@ -9,11 +9,9 @@ import subway.view.PageRepository;
 import java.util.Scanner;
 
 public class LineController {
-    private final Scanner scanner;
     private final LineView lineView;
 
     public LineController(Scanner scanner){
-        this.scanner = scanner;
         lineView = new LineView(scanner);
     }
 
@@ -32,7 +30,7 @@ public class LineController {
         }
 
         if(input.equals("3")){
-            lineView.printLines();
+            printLines();
         }
 
         if(input.equals("B")){
@@ -53,6 +51,10 @@ public class LineController {
         Name name = lineView.getLineNameToDelete();
         LineRepository.deleteByName(name);
         lineView.printDeleteSuccessMessage();
+    }
+
+    private void printLines(){
+        lineView.printLines(LineRepository.lines());
     }
 }
 
