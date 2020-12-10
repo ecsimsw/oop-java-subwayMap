@@ -1,5 +1,6 @@
 package subway.view;
 
+import subway.domain.Line;
 import subway.domain.Station;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class OutView {
 
     public static void printStationList(List<Station> stations){
         for(Station station : stations){
-            OutView.printf(INFO_MESSAGE, station.getName());
+            OutView.printInfo(station.getName());
         }
     }
 

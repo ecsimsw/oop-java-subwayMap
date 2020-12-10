@@ -1,5 +1,7 @@
 package subway.controller;
 
+import subway.domain.Line;
+import subway.domain.LineRepository;
 import subway.view.InputView;
 import subway.view.OutView;
 import subway.view.PageRepository;
@@ -39,7 +41,7 @@ public class MainController {
         }
 
         if(input.equals("3")){
-            sectionController.printSectionMenu();
+            printSubwayMap();
         }
 
         if(input.equals("B")){
@@ -51,5 +53,12 @@ public class MainController {
         isOnLoop = false;
     }
 
+    private void printSubwayMap(){
+        for(Line line : LineRepository.lines()){
+            OutView.printInfo(line.getName());
+            OutView.printInfo("---\n");
+            OutView.printStationList(line.getStations());
+        }
+    }
 
 }

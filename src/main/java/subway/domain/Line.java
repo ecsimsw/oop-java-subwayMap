@@ -30,6 +30,10 @@ public class Line {
         return name;
     }
 
+    public List<Station> getStations(){
+        return stations;
+    }
+
     public void addSection(int index, Station station){
         if(stations.size() < index){
             throw new IllegalArgumentException("잘못된 순서입니다.");
