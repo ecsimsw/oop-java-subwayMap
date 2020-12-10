@@ -11,13 +11,13 @@ public class Station {
         return name;
     }
 
-    public boolean isName(Name name){
+    public boolean isName(Name name) {
         return this.name.equals(name);
     }
 
     @Override
-    public boolean equals(Object o){
-        if(o instanceof Station){
+    public boolean equals(Object o) {
+        if (o instanceof Station) {
             return ((Station) o).name.equals(this.name);
         }
         return false;

@@ -13,31 +13,31 @@ import java.util.Scanner;
 public class SectionController {
     private final Scanner scanner;
 
-    public SectionController(Scanner scanner){
+    public SectionController(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public void printSectionMenu(){
+    public void printSectionMenu() {
         OutputView.print(PageRepository.sectionPage);
         String input = InputView.getSelect(scanner);
         nextPage(input);
     }
 
-    private void nextPage(String input){
-        if(input.equals("1")){
+    private void nextPage(String input) {
+        if (input.equals("1")) {
             addSection();
         }
 
-        if(input.equals("2")){
+        if (input.equals("2")) {
             removeSection();
         }
 
-        if(input.equals("B")){
+        if (input.equals("B")) {
             return;
         }
     }
 
-    public void addSection(){
+    public void addSection() {
         OutputView.print("## 노선을 입력하세요. \n");
         Line line = LineRepository.getByName(InputView.getName(scanner));
         OutputView.print("## 역 이름을 입력하세요. \n");
@@ -48,7 +48,7 @@ public class SectionController {
         OutputView.printInfo("구간이 등록되었습니다.\n");
     }
 
-    public void removeSection(){
+    public void removeSection() {
         OutputView.print("## 삭제할 구간의 노선을 입력하세요. \n");
         Line line = LineRepository.getByName(InputView.getName(scanner));
         OutputView.print("## 삭제할 구간의 역을 입력하세요. \n");
