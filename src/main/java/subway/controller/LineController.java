@@ -4,7 +4,9 @@ import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
+import subway.view.In;
 import subway.view.Out;
+import subway.view.PageRepository;
 
 import java.util.Scanner;
 
@@ -13,6 +15,30 @@ public class LineController {
 
     public LineController(Scanner scanner){
         this.scanner = scanner;
+    }
+
+    public void printLineMenu(){
+        Out.print(PageRepository.linePage);
+        String input = In.getSelect(scanner);
+        nextPage(input);
+    }
+
+    private void nextPage(String input){
+        if(input.equals("1")){
+            addLine();
+        }
+
+        if(input.equals("2")){
+            deleteLine();
+        }
+
+        if(input.equals("3")){
+            printLines();
+        }
+
+        if(input.equals("B")){
+            return;
+        }
     }
 
     public void addLine(){
