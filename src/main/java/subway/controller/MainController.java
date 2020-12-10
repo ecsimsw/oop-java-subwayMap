@@ -3,6 +3,7 @@ package subway.controller;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.view.InputView;
+import subway.view.MainView;
 import subway.view.OutputView;
 import subway.view.PageRepository;
 
@@ -13,6 +14,7 @@ public class MainController {
     private final LineController lineController;
     private final SectionController sectionController;
     private final StationController stationController;
+    private final MainView mainView;
 
     private boolean isOnLoop = true;
 
@@ -21,12 +23,12 @@ public class MainController {
         lineController = new LineController(scanner);
         sectionController = new SectionController(scanner);
         stationController = new StationController(scanner);
+        mainView = new MainView(scanner);
     }
 
     public void printStationMenu(){
         do {
-            OutputView.print(PageRepository.mainPage);
-            String input = InputView.getSelect(scanner);
+            String input = mainView.selectMainMenu();
             nextPage(input);
         } while (isOnLoop);
     }
@@ -45,7 +47,7 @@ public class MainController {
         }
 
         if(input.equals("4")){
-            printSubwayMap();
+            mainView.printSubwayMap();
         }
 
         if(input.equals("B")){
@@ -55,13 +57,5 @@ public class MainController {
 
     private void setLoopEnd(){
         isOnLoop = false;
-    }
-
-    private void printSubwayMap(){
-        for(Line line : LineRepository.lines()){
-            OutputView.printInfo(line.getName());
-            OutputView.printInfo("---\n");
-            OutputView.printStationList(line.getStations());
-        }
     }
 }
