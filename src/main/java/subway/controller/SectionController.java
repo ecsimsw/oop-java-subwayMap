@@ -4,7 +4,9 @@ import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
+import subway.view.In;
 import subway.view.Out;
+import subway.view.PageRepository;
 
 import java.util.Scanner;
 
@@ -13,6 +15,26 @@ public class SectionController {
 
     public SectionController(Scanner scanner){
         this.scanner = scanner;
+    }
+
+    public void printSectionMenu(){
+        Out.print(PageRepository.sectionPage);
+        String input = In.getSelect(scanner);
+        nextPage(input);
+    }
+
+    private void nextPage(String input){
+        if(input.equals("1")){
+            addSection();
+        }
+
+        if(input.equals("2")){
+            removeSection();
+        }
+
+        if(input.equals("B")){
+            return;
+        }
     }
 
     public void addSection(){
