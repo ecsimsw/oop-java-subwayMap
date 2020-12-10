@@ -21,4 +21,9 @@ public class StationController {
         Out.print("지하철 역이 등록되었습니다.\n");
     }
 
+    public void printStation(){
+        Out.print("## 역 목록\n");
+        Out.printStationList(StationRepository.stations());
+        Out.print("\n");
+    }
 }
