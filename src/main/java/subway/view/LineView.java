@@ -52,6 +52,11 @@ public class LineView {
         }
     }
 
+    public void printAddSuccessMessage(){
+        OutputView.printInfo("지하철 노선이 등록되었습니다. \n");
+    }
+
+
     public Name getLineNameToDelete(){
         OutputView.print("## 삭제할 노선 이름을 입력하세요.\n");
         try{
@@ -62,10 +67,6 @@ public class LineView {
             OutputView.printError(e);
             return getLineNameToDelete();
         }
-    }
-
-    public void printAddSuccessMessage(){
-        OutputView.printInfo("지하철 노선이 등록되었습니다. \n");
     }
 
     public void printDeleteSuccessMessage(){
