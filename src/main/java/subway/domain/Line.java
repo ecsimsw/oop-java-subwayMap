@@ -41,4 +41,16 @@ public class Line {
 
         stations.add(index, station);
     }
+
+    public void removeSection(Station station){
+        if(!stations.contains(station)){
+            throw new IllegalArgumentException("노선에 존재하는 역이 아닙니다.");
+        }
+
+        if(stations.size() <= 2){
+            throw new IllegalArgumentException("노선에 포함된 역이 두개 이하일 때는 역을 제거할 수 없습니다.");
+        }
+
+        stations.remove(station);
+    }
 }

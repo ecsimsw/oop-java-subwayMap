@@ -25,4 +25,13 @@ public class SectionController {
         line.addSection(order, station);
         Out.printInfo("구간이 등록되었습니다.\n");
     }
+
+    public void removeSection(){
+        Out.print("## 삭제할 구간의 노선을 입력하세요. \n");
+        Line line = LineRepository.getByName(scanner.nextLine());
+        Out.print("## 삭제할 구간의 역을 입력하세요. \n");
+        Station station = StationRepository.getByName(scanner.nextLine());
+        line.removeSection(station);
+        Out.printInfo("구간이 삭제되었습니다.\n");
+    }
 }
