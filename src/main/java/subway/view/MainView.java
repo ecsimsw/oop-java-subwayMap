@@ -1,8 +1,8 @@
 package subway.view;
 
 import subway.domain.Line;
-import subway.domain.LineRepository;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MainView {
@@ -17,8 +17,8 @@ public class MainView {
         return InputView.getSelect(scanner);
     }
 
-    public void printSubwayMap(){
-        for(Line line : LineRepository.lines()){
+    public void printSubwayMap(List<Line> lines){
+        for(Line line : lines){
             OutputView.printInfo(line.getName());
             OutputView.printInfo("---\n");
             OutputView.printStationList(line.getStations());

@@ -47,7 +47,7 @@ public class MainController {
         }
 
         if(input.equals("4")){
-            mainView.printSubwayMap();
+            printSubwayMap();
         }
 
         if(input.equals("B")){
@@ -57,5 +57,9 @@ public class MainController {
 
     private void setLoopEnd(){
         isOnLoop = false;
+    }
+
+    private void printSubwayMap(){
+        mainView.printSubwayMap(LineRepository.lines());
     }
 }
