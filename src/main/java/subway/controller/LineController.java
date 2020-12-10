@@ -3,6 +3,7 @@ package subway.controller;
 import subway.Repository.LineRepository;
 import subway.domain.*;
 import subway.view.LineView;
+import subway.view.OutputView;
 
 import java.util.Scanner;
 
@@ -36,18 +37,28 @@ public class LineController {
     }
 
     private void addLine() {
-        Name name = lineView.getLineNameToAdd();
-        Station firstStation = lineView.getFirstStation();
-        Station lastStation = lineView.getLastStation(firstStation);
+        try{
+            Name name = lineView.getLineNameToAdd();
+            Station firstStation = lineView.getFirstStation();
+            Station lastStation = lineView.getLastStation(firstStation);
 
-        LineRepository.addLine(new Line(name, firstStation, lastStation));
-        lineView.printAddSuccessMessage();
+            LineRepository.addLine(new Line(name, firstStation, lastStation));
+            lineView.printAddSuccessMessage();
+        } catch (Exception e){
+            OutputView.printError(e);
+            addLine();
+        }
     }
 
     private void deleteLine() {
-        Name name = lineView.getLineNameToDelete();
-        LineRepository.deleteByName(name);
-        lineView.printDeleteSuccessMessage();
+        try{
+            Name name = lineView.getLineNameToDelete();
+            LineRepository.deleteByName(name);
+            lineView.printDeleteSuccessMessage();
+        }catch (Exception e){
+            OutputView.printError(e);
+            deleteLine();
+        }
     }
 
     private void printLines() {

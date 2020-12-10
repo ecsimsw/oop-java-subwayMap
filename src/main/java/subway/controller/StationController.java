@@ -2,6 +2,7 @@ package subway.controller;
 
 import subway.domain.Station;
 import subway.Repository.StationRepository;
+import subway.view.OutputView;
 import subway.view.StationView;
 
 import java.util.Scanner;
@@ -36,14 +37,24 @@ public class StationController {
     }
 
     public void addStation() {
-        Station station = new Station(stationView.getStationNameToAdd());
-        StationRepository.addStation(station);
-        stationView.printAddSuccessMessage();
+        try{
+            Station station = new Station(stationView.getStationNameToAdd());
+            StationRepository.addStation(station);
+            stationView.printAddSuccessMessage();
+        }catch (Exception e){
+            OutputView.printError(e);
+            addStation();
+        }
     }
 
     public void deleteStation() {
-        StationRepository.deleteStation(stationView.getStationToDelete());
-        stationView.printDeleteSuccessMessage();
+        try{
+            StationRepository.deleteStation(stationView.getStationToDelete());
+            stationView.printDeleteSuccessMessage();
+        }catch (Exception e){
+            OutputView.printError(e);
+            deleteStation();
+        }
     }
 
     public void printStation() {

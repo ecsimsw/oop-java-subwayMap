@@ -3,6 +3,7 @@ package subway.controller;
 import subway.domain.Line;
 import subway.Repository.LineRepository;
 import subway.domain.Station;
+import subway.view.OutputView;
 import subway.view.SectionView;
 
 import java.util.Scanner;
@@ -33,16 +34,26 @@ public class SectionController {
     }
 
     public void addSection() {
-        Line line = LineRepository.getByName(sectionView.getExistLineName());
-        Station station = sectionView.getStationToAddSection(line);
-        line.addSection(sectionView.getOrder(line), station);
-        sectionView.printSuccessAddMessage();
+        try{
+            Line line = LineRepository.getByName(sectionView.getExistLineName());
+            Station station = sectionView.getStationToAddSection(line);
+            line.addSection(sectionView.getOrder(line), station);
+            sectionView.printSuccessAddMessage();
+        }catch (Exception e){
+            OutputView.printError(e);
+            addSection();
+        }
     }
 
     public void removeSection() {
-        Line line = LineRepository.getByName(sectionView.getExistLineName());
-        Station station = sectionView.getStationToRemove(line);
-        line.removeSection(station);
-        sectionView.printSuccessRemoveMessage();
+        try{
+            Line line = LineRepository.getByName(sectionView.getExistLineName());
+            Station station = sectionView.getStationToRemove(line);
+            line.removeSection(station);
+            sectionView.printSuccessRemoveMessage();
+        }catch (Exception e){
+            OutputView.printError(e);
+            removeSection();
+        }
     }
 }
