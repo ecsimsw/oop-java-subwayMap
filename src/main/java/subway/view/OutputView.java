@@ -9,7 +9,7 @@ public class OutputView {
 
     private OutputView(){}
 
-    public static void printInfo(String msg){
+    public static void printInfo(Object msg){
         printf(INFO_MESSAGE, msg);
     }
 

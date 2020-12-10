@@ -3,19 +3,18 @@ package subway.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
 
     static{
-        stations.add(new Station("교대역"));
-        stations.add(new Station("강남역"));
-        stations.add(new Station("역삼역"));
-        stations.add(new Station("남부터미널역"));
-        stations.add(new Station("양재역"));
-        stations.add(new Station("양재시민의숲역"));
-        stations.add(new Station("매봉역"));
+        stations.add(new Station(new Name("교대역")));
+        stations.add(new Station(new Name("강남역")));
+        stations.add(new Station(new Name("역삼역")));
+        stations.add(new Station(new Name("남부터미널역")));
+        stations.add(new Station(new Name("양재역")));
+        stations.add(new Station(new Name("양재시민의숲역")));
+        stations.add(new Station(new Name("매봉역")));
     }
 
     public static List<Station> stations() {
@@ -36,9 +35,9 @@ public class StationRepository {
         stations.remove(station);
     }
 
-    public static Station getByName(String name){
+    public static Station getByName(Name name){
         return stations.stream()
-                .filter(station -> station.getName().equals(name))
+                .filter(station -> station.isName(name))
                 .findFirst()
                 .orElseThrow(()-> new IllegalArgumentException("존재하지 않는 역 입니다."));
     }

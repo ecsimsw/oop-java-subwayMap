@@ -1,9 +1,6 @@
 package subway.controller;
 
-import subway.domain.Line;
-import subway.domain.LineRepository;
-import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.domain.*;
 import subway.view.InputView;
 import subway.view.OutputView;
 import subway.view.PageRepository;
@@ -43,14 +40,14 @@ public class LineController {
 
     public void addLine(){
         OutputView.print("## 등록할 노선 이름을 입력하세요.\n");
-        String name = scanner.nextLine();
+        Name name = InputView.getName(scanner);
         OutputView.print("## 등록할 노선의 상행 종점역 이름을 입력하세요.\n");
-        String first = scanner.nextLine();
+        Name firstStationName = InputView.getName(scanner);
         OutputView.print("## 등록할 노선의 하행 종점역 이름을 입력하세요.\n");
-        String last = scanner.nextLine();
+        Name lastStationName = InputView.getName(scanner);
 
-        Station firstStation = StationRepository.getByName(first);
-        Station lastStation = StationRepository.getByName(last);
+        Station firstStation = StationRepository.getByName(firstStationName);
+        Station lastStation = StationRepository.getByName(lastStationName);
 
         LineRepository.addLine(new Line(name, firstStation, lastStation));
         OutputView.printInfo("지하철 노선이 등록되었습니다. \n");
@@ -58,8 +55,7 @@ public class LineController {
 
     public void deleteLine(){
         OutputView.print("## 삭제할 노선 이름을 입력하세요.\n");
-        String name = scanner.nextLine();
-        LineRepository.deleteByName(name);
+        LineRepository.deleteByName(InputView.getName(scanner));
         OutputView.printInfo("지하철 노선이 삭제되었습니다. \n");
     }
 

@@ -39,9 +39,9 @@ public class SectionController {
 
     public void addSection(){
         OutputView.print("## 노선을 입력하세요. \n");
-        Line line = LineRepository.getByName(scanner.nextLine());
+        Line line = LineRepository.getByName(InputView.getName(scanner));
         OutputView.print("## 역 이름을 입력하세요. \n");
-        Station station = StationRepository.getByName(scanner.nextLine());
+        Station station = StationRepository.getByName(InputView.getName(scanner));
         OutputView.print("## 순서을 입력하세요. \n");
         int order = Integer.parseInt(scanner.nextLine());
         line.addSection(order, station);
@@ -50,9 +50,9 @@ public class SectionController {
 
     public void removeSection(){
         OutputView.print("## 삭제할 구간의 노선을 입력하세요. \n");
-        Line line = LineRepository.getByName(scanner.nextLine());
+        Line line = LineRepository.getByName(InputView.getName(scanner));
         OutputView.print("## 삭제할 구간의 역을 입력하세요. \n");
-        Station station = StationRepository.getByName(scanner.nextLine());
+        Station station = StationRepository.getByName(InputView.getName(scanner));
         line.removeSection(station);
         OutputView.printInfo("구간이 삭제되었습니다.\n");
     }

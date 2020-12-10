@@ -9,25 +9,28 @@ public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
 
     static {
-        Station gyodae = StationRepository.getByName("교대역");
-        Station gangnam = StationRepository.getByName("강남역");
-        Station yoeksam = StationRepository.getByName("역삼역");
-        lines.add(new Line("2호선", gyodae, gangnam, yoeksam));
+        Station gyodae = StationRepository.getByName(new Name("교대역"));
+        Station gangnam = StationRepository.getByName(new Name("강남역"));
+        Station yoeksam = StationRepository.getByName(new Name("역삼역"));
+        Name newLineName = new Name("2호선");
+        lines.add(new Line(newLineName, gyodae, gangnam, yoeksam));
     }
 
     static {
-        Station gyodae = StationRepository.getByName("교대역");
-        Station namboo = StationRepository.getByName("남부터미널역");
-        Station yangjae = StationRepository.getByName("양재역");
-        Station maebong = StationRepository.getByName("매봉역");
-        lines.add(new Line("3호선", gyodae, namboo, yangjae, maebong));
+        Station gyodae = StationRepository.getByName(new Name("교대역"));
+        Station namboo = StationRepository.getByName(new Name("남부터미널역"));
+        Station yangjae = StationRepository.getByName(new Name("양재역"));
+        Station maebong = StationRepository.getByName(new Name("매봉역"));
+        Name newLineName = new Name("3호선");
+        lines.add(new Line(newLineName, gyodae, namboo, yangjae, maebong));
     }
 
     static {
-        Station gangnam = StationRepository.getByName("강남역");
-        Station yangjae = StationRepository.getByName("양재역");
-        Station yangjaeForest = StationRepository.getByName("양재시민의숲역");
-        lines.add(new Line("신분당선", gangnam, yangjae, yangjaeForest));
+        Station gangnam = StationRepository.getByName(new Name("강남역"));
+        Station yangjae = StationRepository.getByName(new Name("양재역"));
+        Station yangjaeForest = StationRepository.getByName(new Name("양재시민의숲역"));
+        Name newLineName = new Name("신분당선");
+        lines.add(new Line(newLineName, gangnam, yangjae, yangjaeForest));
     }
 
     public static List<Line> lines() {
@@ -41,15 +44,15 @@ public class LineRepository {
         lines.add(line);
     }
 
-    public static Line getByName(String name){
-        return lines.stream()
-                .filter(line -> line.getName().equals(name))
-                .findFirst()
-                .orElseThrow(()->new IllegalArgumentException("노선이 존재하지 않습니다."));
-    }
-
-    public static void deleteByName(String lineName) {
+    public static void deleteByName(Name lineName) {
         Line deleteLine = getByName(lineName);
         lines.remove(deleteLine);
+    }
+
+    public static Line getByName(Name name){
+        return lines.stream()
+                .filter(line -> line.isName(name))
+                .findFirst()
+                .orElseThrow(()->new IllegalArgumentException("노선이 존재하지 않습니다."));
     }
 }

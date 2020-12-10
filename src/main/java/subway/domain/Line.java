@@ -4,17 +4,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Line {
-    private String name;
+    private Name name;
     private LinkedList<Station> stations = new LinkedList<>();
 
-    public Line(String name, Station first, Station last) {
+    public Line(Name name, Station first, Station last) {
         this.name = name;
 
         stations.add(0,first);
         stations.add(stations.size(),last);
     }
 
-    public Line(String name, Station... args) {
+    public Line(Name name, Station... args) {
         this.name = name;
 
         if(args.length <2){
@@ -26,7 +26,7 @@ public class Line {
         }
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
@@ -56,5 +56,9 @@ public class Line {
         }
 
         stations.remove(station);
+    }
+
+    public boolean isName(Name otherName){
+        return this.name.equals(otherName);
     }
 }
