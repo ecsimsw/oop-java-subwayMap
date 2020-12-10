@@ -31,7 +31,7 @@ public class StationController {
         }
 
         if(input.equals("3")){
-            deleteStation();
+            printStation();
         }
 
         if(input.equals("B")){
