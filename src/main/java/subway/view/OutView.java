@@ -4,10 +4,10 @@ import subway.domain.Station;
 
 import java.util.List;
 
-public class Out {
+public class OutView {
     private static final String INFO_MESSAGE = "[INFO] %s\n";
 
-    private Out(){}
+    private OutView(){}
 
     public static void printInfo(String msg){
         printf(INFO_MESSAGE, msg);
@@ -15,7 +15,7 @@ public class Out {
 
     public static void printStationList(List<Station> stations){
         for(Station station : stations){
-            Out.printf(INFO_MESSAGE, station.getName());
+            OutView.printf(INFO_MESSAGE, station.getName());
         }
     }
 

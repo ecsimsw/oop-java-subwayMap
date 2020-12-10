@@ -2,8 +2,8 @@ package subway.controller;
 
 import subway.domain.Station;
 import subway.domain.StationRepository;
-import subway.view.In;
-import subway.view.Out;
+import subway.view.InputView;
+import subway.view.OutView;
 import subway.view.PageRepository;
 
 import java.util.Scanner;
@@ -16,8 +16,8 @@ public class StationController {
     }
 
     public void printStationMenu(){
-        Out.print(PageRepository.stationPage);
-        String input = In.getSelect(scanner);
+        OutView.print(PageRepository.stationPage);
+        String input = InputView.getSelect(scanner);
         nextPage(input);
     }
 
@@ -40,22 +40,22 @@ public class StationController {
     }
 
     public void addStation(){
-        Out.print("## 등록할 역 이름을 입력하세요.\n");
+        OutView.print("## 등록할 역 이름을 입력하세요.\n");
         Station station = new Station(scanner.nextLine());
         StationRepository.addStation(station);
-        Out.printInfo("지하철 역이 등록되었습니다.\n");
+        OutView.printInfo("지하철 역이 등록되었습니다.\n");
     }
 
     public void deleteStation(){
-        Out.print("## 삭제할 역 이름을 입력하세요.\n");
+        OutView.print("## 삭제할 역 이름을 입력하세요.\n");
         Station station = new Station(scanner.nextLine());
         StationRepository.deleteStation(station);
-        Out.printInfo("지하철 역이 삭제되었습니다.\n");
+        OutView.printInfo("지하철 역이 삭제되었습니다.\n");
     }
 
     public void printStation(){
-        Out.print("## 역 목록\n");
-        Out.printStationList(StationRepository.stations());
-        Out.print("\n");
+        OutView.print("## 역 목록\n");
+        OutView.printStationList(StationRepository.stations());
+        OutView.print("\n");
     }
 }

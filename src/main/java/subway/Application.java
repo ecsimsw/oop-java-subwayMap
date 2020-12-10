@@ -1,9 +1,6 @@
 package subway;
 
 import subway.controller.MainController;
-import subway.view.In;
-import subway.view.Out;
-import subway.view.PageRepository;
 
 import java.util.Scanner;
 

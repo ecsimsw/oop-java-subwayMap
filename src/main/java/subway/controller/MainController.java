@@ -1,7 +1,7 @@
 package subway.controller;
 
-import subway.view.In;
-import subway.view.Out;
+import subway.view.InputView;
+import subway.view.OutView;
 import subway.view.PageRepository;
 
 import java.util.Scanner;
@@ -23,8 +23,8 @@ public class MainController {
 
     public void printStationMenu(){
         do {
-            Out.print(PageRepository.mainPage);
-            String input = In.getSelect(scanner);
+            OutView.print(PageRepository.mainPage);
+            String input = InputView.getSelect(scanner);
             nextPage(input);
         } while (isOnLoop);
     }

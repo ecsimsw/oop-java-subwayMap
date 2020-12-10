@@ -2,11 +2,11 @@ package subway.view;
 
 import java.util.Scanner;
 
-public class In {
-    private In(){}
+public class InputView {
+    private InputView(){}
 
     public static String getSelect(Scanner scanner){
-        Out.print(PageRepository.selectPageMessage);
+        OutView.print(PageRepository.selectPageMessage);
         return getInput(scanner);
     }
 
