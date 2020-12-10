@@ -16,11 +16,11 @@ public class LineController {
     }
 
     public void addLine(){
-        Out.print("## 등록할 노선 이름을 입력하세요.");
+        Out.print("## 등록할 노선 이름을 입력하세요.\n");
         String name = scanner.nextLine();
-        Out.print("## 등록할 노선의 상행 종점역 이름을 입력하세요.");
+        Out.print("## 등록할 노선의 상행 종점역 이름을 입력하세요.\n");
         String first = scanner.nextLine();
-        Out.print("## 등록할 노선의 하행 종점역 이름을 입력하세요.");
+        Out.print("## 등록할 노선의 하행 종점역 이름을 입력하세요.\n");
         String last = scanner.nextLine();
 
         Station firstStation = StationRepository.getByName(first);
@@ -31,7 +31,7 @@ public class LineController {
     }
 
     public void deleteLine(){
-        Out.print("## 삭제할 노선 이름을 입력하세요.");
+        Out.print("## 삭제할 노선 이름을 입력하세요.\n");
         String name = scanner.nextLine();
         LineRepository.deleteByName(name);
         Out.printInfo("지하철 노선이 삭제되었습니다. \n");

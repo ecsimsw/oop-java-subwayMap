@@ -47,7 +47,7 @@ public class StationController {
     }
 
     public void deleteStation(){
-        Out.print("## 삭제할 역 이름을 입력하세요.");
+        Out.print("## 삭제할 역 이름을 입력하세요.\n");
         Station station = new Station(scanner.nextLine());
         StationRepository.deleteStation(station);
         Out.printInfo("지하철 역이 삭제되었습니다.\n");
