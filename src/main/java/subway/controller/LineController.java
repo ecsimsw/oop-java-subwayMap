@@ -36,5 +36,13 @@ public class LineController {
         LineRepository.deleteByName(name);
         Out.printInfo("지하철 노선이 삭제되었습니다. \n");
     }
+
+    public void printLines(){
+        Out.print("## 노션 목록\n");
+        LineRepository.lines()
+                .stream()
+                .map(Line::getName)
+                .forEach(name -> Out.printInfo(name+"\n"));
+    }
 }
 
