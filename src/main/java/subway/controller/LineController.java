@@ -30,5 +30,11 @@ public class LineController {
         Out.printInfo("지하철 노선이 등록되었습니다. \n");
     }
 
+    public void deleteLine(){
+        Out.print("## 삭제할 노선 이름을 입력하세요.");
+        String name = scanner.nextLine();
+        LineRepository.deleteByName(name);
+        Out.printInfo("지하철 노선이 삭제되었습니다. \n");
+    }
 }
 

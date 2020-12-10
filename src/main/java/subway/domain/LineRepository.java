@@ -35,10 +35,21 @@ public class LineRepository {
     }
 
     public static void addLine(Line line) {
+        if(lines.contains(line)){
+            throw new IllegalArgumentException("이미 존재하는 노선입니다.");
+        }
         lines.add(line);
     }
 
-    public static boolean deleteLineByName(String name) {
-        return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    public static Line getByName(String name){
+        return lines.stream()
+                .filter(line -> line.getName().equals(name))
+                .findFirst()
+                .orElseThrow(()->new IllegalArgumentException("노선이 존재하지 않습니다."));
+    }
+
+    public static void deleteByName(String lineName) {
+        Line deleteLine = getByName(lineName);
+        lines.remove(deleteLine);
     }
 }
