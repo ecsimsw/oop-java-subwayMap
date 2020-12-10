@@ -1,6 +1,6 @@
 package subway.controller;
 
-import subway.domain.LineRepository;
+import subway.Repository.LineRepository;
 import subway.view.MainView;
 
 import java.util.Scanner;

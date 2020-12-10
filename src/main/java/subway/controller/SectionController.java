@@ -1,12 +1,12 @@
 package subway.controller;
 
 import subway.domain.Line;
-import subway.domain.LineRepository;
+import subway.Repository.LineRepository;
 import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.Repository.StationRepository;
 import subway.view.InputView;
 import subway.view.OutputView;
-import subway.view.PageRepository;
+import subway.Repository.PageRepository;
 
 import java.util.Scanner;
 

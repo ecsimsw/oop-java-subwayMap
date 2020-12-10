@@ -1,8 +1,9 @@
 package subway.view;
 
+import subway.Repository.PageRepository;
 import subway.domain.Name;
 import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.Repository.StationRepository;
 import subway.domain.validator.StationValidator;
 
 import java.util.Scanner;

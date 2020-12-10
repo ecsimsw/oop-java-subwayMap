@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.Repository.LineRepository;
 import subway.domain.*;
 import subway.view.LineView;
 

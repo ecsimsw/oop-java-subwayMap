@@ -1,4 +1,4 @@
-package subway.view;
+package subway.Repository;
 
 public class PageRepository {
     private PageRepository() {

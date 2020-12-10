@@ -1,7 +1,7 @@
 package subway.controller;
 
 import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.Repository.StationRepository;
 import subway.view.StationView;
 
 import java.util.Scanner;

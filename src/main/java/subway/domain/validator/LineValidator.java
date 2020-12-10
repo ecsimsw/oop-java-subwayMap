@@ -1,6 +1,6 @@
 package subway.domain.validator;
 
-import subway.domain.LineRepository;
+import subway.Repository.LineRepository;
 import subway.domain.Name;
 import subway.domain.Station;
 
