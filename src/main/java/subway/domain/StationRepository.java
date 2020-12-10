@@ -23,11 +23,17 @@ public class StationRepository {
     }
 
     public static void addStation(Station station) {
+        if(stations.contains(station)){
+            throw new IllegalArgumentException("이미 존재하는 역 입니다.");
+        }
         stations.add(station);
     }
 
-    public static boolean deleteStation(String name) {
-        return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    public static void deleteStation(Station station) {
+        if(!stations.contains(station)){
+            throw new IllegalArgumentException("삭제할 역이 존재하지 않습니다.");
+        }
+        stations.remove(station);
     }
 
     public static Station getByName(String name){
