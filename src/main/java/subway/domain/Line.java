@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Line {
     private String name;
-    private LinkedList<Station> stations;
+    private LinkedList<Station> stations = new LinkedList<>();
 
     public Line(String name, Station first, Station last) {
         this.name = name;
