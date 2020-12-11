@@ -11,7 +11,7 @@ import java.util.Scanner;
 import java.util.List;
 
 public class StationView {
-    private static final String[] buttons = new String[]{"1","2","3","B"};
+    private static final String[] buttons = new String[]{"1", "2", "3", "B"};
     private final Scanner scanner;
 
     public StationView(Scanner scanner) {
@@ -20,11 +20,11 @@ public class StationView {
 
     public String selectStationMenu() {
         OutputView.print(PageRepository.stationPage);
-        try{
+        try {
             String input = InputView.getSelect(scanner);
             MainValidator.checkValidSelection(input, buttons);
             return input;
-        }catch (Exception e){
+        } catch (Exception e) {
             OutputView.printError(e);
             return selectStationMenu();
         }

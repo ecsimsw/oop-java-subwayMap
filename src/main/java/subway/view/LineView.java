@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.List;
 
 public class LineView {
-    private static final String[] buttons = new String[]{"1","2","3","B"};
+    private static final String[] buttons = new String[]{"1", "2", "3", "B"};
     private final Scanner scanner;
 
     public LineView(Scanner scanner) {
@@ -19,11 +19,11 @@ public class LineView {
 
     public String selectLineMenu() {
         OutputView.print(PageRepository.linePage);
-        try{
+        try {
             String input = InputView.getSelect(scanner);
             MainValidator.checkValidSelection(input, buttons);
             return input;
-        }catch (Exception e){
+        } catch (Exception e) {
             OutputView.printError(e);
             return selectLineMenu();
         }

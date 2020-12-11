@@ -37,21 +37,21 @@ public class StationController {
     }
 
     public void addStation() {
-        try{
+        try {
             Station station = new Station(stationView.getStationNameToAdd());
             StationRepository.addStation(station);
             stationView.printAddSuccessMessage();
-        }catch (Exception e){
+        } catch (Exception e) {
             OutputView.printError(e);
             addStation();
         }
     }
 
     public void deleteStation() {
-        try{
+        try {
             StationRepository.deleteStation(stationView.getStationToDelete());
             stationView.printDeleteSuccessMessage();
-        }catch (Exception e){
+        } catch (Exception e) {
             OutputView.printError(e);
             deleteStation();
         }

@@ -34,24 +34,24 @@ public class SectionController {
     }
 
     public void addSection() {
-        try{
+        try {
             Line line = LineRepository.getByName(sectionView.getExistLineName());
             Station station = sectionView.getStationToAddSection(line);
             line.addSection(sectionView.getOrder(line), station);
             sectionView.printSuccessAddMessage();
-        }catch (Exception e){
+        } catch (Exception e) {
             OutputView.printError(e);
             addSection();
         }
     }
 
     public void removeSection() {
-        try{
+        try {
             Line line = LineRepository.getByName(sectionView.getExistLineName());
             Station station = sectionView.getStationToRemove(line);
             line.removeSection(station);
             sectionView.printSuccessRemoveMessage();
-        }catch (Exception e){
+        } catch (Exception e) {
             OutputView.printError(e);
             removeSection();
         }

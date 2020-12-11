@@ -37,25 +37,25 @@ public class LineController {
     }
 
     private void addLine() {
-        try{
+        try {
             Name name = lineView.getLineNameToAdd();
             Station firstStation = lineView.getFirstStation();
             Station lastStation = lineView.getLastStation(firstStation);
 
             LineRepository.addLine(new Line(name, firstStation, lastStation));
             lineView.printAddSuccessMessage();
-        } catch (Exception e){
+        } catch (Exception e) {
             OutputView.printError(e);
             addLine();
         }
     }
 
     private void deleteLine() {
-        try{
+        try {
             Name name = lineView.getLineNameToDelete();
             LineRepository.deleteByName(name);
             lineView.printDeleteSuccessMessage();
-        }catch (Exception e){
+        } catch (Exception e) {
             OutputView.printError(e);
             deleteLine();
         }

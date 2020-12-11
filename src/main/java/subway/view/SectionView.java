@@ -13,7 +13,7 @@ import subway.domain.validator.SectionValidator;
 import java.util.Scanner;
 
 public class SectionView {
-    private static final String[] buttons = new String[]{"1","2","B"};
+    private static final String[] buttons = new String[]{"1", "2", "B"};
     private final Scanner scanner;
 
     public SectionView(Scanner scanner) {
@@ -22,11 +22,11 @@ public class SectionView {
 
     public String selectSectionMenu() {
         OutputView.print(PageRepository.sectionPage);
-        try{
+        try {
             String input = InputView.getSelect(scanner);
             MainValidator.checkValidSelection(input, buttons);
             return input;
-        }catch (Exception e){
+        } catch (Exception e) {
             OutputView.printError(e);
             return selectSectionMenu();
         }

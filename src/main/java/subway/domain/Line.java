@@ -66,7 +66,7 @@ public class Line {
         return this.stations.contains(station);
     }
 
-    public int getSize(){
+    public int getSize() {
         return stations.size();
     }
 }

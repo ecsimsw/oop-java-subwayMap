@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MainView {
-    private static final String[] buttons = new String[]{"1","2","3","4","Q"};
+    private static final String[] buttons = new String[]{"1", "2", "3", "4", "Q"};
     private final Scanner scanner;
 
     public MainView(Scanner scanner) {
@@ -17,11 +17,11 @@ public class MainView {
 
     public String selectMainMenu() {
         OutputView.print(PageRepository.mainPage);
-        try{
+        try {
             String input = InputView.getSelect(scanner);
             MainValidator.checkValidSelection(input, buttons);
             return input;
-        }catch (Exception e){
+        } catch (Exception e) {
             OutputView.printError(e);
             return selectMainMenu();
         }
